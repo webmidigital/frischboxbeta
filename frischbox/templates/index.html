@@ -1,0 +1,264 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="main">
+    <br>
+    <section class="home-slider position-relative mb-30">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xl-12 col-lg-12">
+                    <div class="home-slide-cover">
+                        <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
+                            {% for n in sliderall %}
+                            <div class="single-hero-slider single-animation-wrap"
+                                 style="background-image: url({{n.image.url}})">
+
+                            </div>
+                             {% endfor %}
+
+                        </div>
+                        <div class="slider-arrow hero-slider-1-arrow"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--End hero slider-->
+
+    <!--End category slider-->
+
+    <!--End banners-->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    <h2 class="text-center">How Freshbox Works</h2>
+                    <br>
+                    <p> Pause and Resume deliveries as you wish, with just a click of a button.</p>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                    <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
+                         data-wow-delay=".2s">
+
+                        <div class="banner-text text-center">
+                            <img src="{% static 'imgs/how/select_plan.webp' %}" alt=""/>
+                            <h3 class="icon-box-title text-center">Select Plan</h3>
+                            <p>Select a plan that suits you, starting from single day to month.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                    <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
+                         data-wow-delay=".4s">
+                        <div class="banner-text text-center">
+                            <img src="{% static 'imgs/how/customise_delivery.webp' %}" alt=""/>
+                            <h3 class="icon-box-title text-center">Schedule Delivery</h3>
+                            <p>We will leave the Tender Coconuts at your doorsteps by 7:30am.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                    <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
+                         data-wow-delay=".4s">
+                        <div class="banner-text text-center">
+                            <img src="{% static 'imgs/how/get_delivery.webp' %}" alt=""/>
+                            <br><br>
+                            <h3 class="icon-box-title text-center">Enjoy Coconut</h3>
+                            <p>We will leave the Tender Coconuts at your doorsteps by 7:30am.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 d-xl-none">
+                    <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
+                         data-wow-delay=".5s">
+                        <div class="banner-icon">
+                            <img src="assets/imgs/theme/icons/icon-6.svg" alt=""/>
+                        </div>
+                        <div class="banner-text">
+                            <h3 class="icon-box-title text-center">Safe delivery</h3>
+                            <p>Within 30 days</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+
+    <section class="section-padding pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    <h2 class="text-center">SUBSCRIPTION PACKS</h2>
+                    <br>
+                    <p> Pause and Resume deliveries as you wish, with just a click of a button.</p>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 wow animate__animated animate__fadeIn" data-wow-delay=".4s">
+                    <div class="tab-content" id="myTabContent-1">
+                        <div class="tab-pane fade show active" id="tab-one-1" role="tabpanel"
+                             aria-labelledby="tab-one-1">
+                            <div class="carausel-4-columns-cover arrow-center position-relative">
+                                <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow"
+                                     id="carausel-4-columns-arrows"></div>
+                                 <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">
+                                       {% for n in allpackages %}
+                                      <div class="product-cart-wrap">
+
+                                    <div class="card mb-4 box-shadow">
+                                        <div class="card-header">
+                                            <h4 class="my-0 font-weight-normal">8% OFF</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <img class="default-img" src="{{n.image.url}}" alt=""/>
+                                            <span class="old-price font-md ml-15 ">{{n.Mrp}} </span>
+                                            <h3 class="card-title pricing-card-title text-center ">{{n.sale_price}} </h3>
+                                            <p class="text-center">{{n.name}}</p>
+                                            <ul class="list-unstyled mt-3 mb-4 text-center">
+                                                {{n.package_description | safe}}
+                                            </ul>
+                                            <div class="row">
+                                                <div class="col-md-4">
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <form>
+                                                        <div class="detail-qty border radius">
+                                                            <a href="#" class="qty-down"><i
+                                                                    class="fi-rs-angle-small-down"></i></a>
+                                                            <span class="qty-val">1</span>
+                                                            <a href="#" class="qty-up"><i
+                                                                    class="fi-rs-angle-small-up"></i></a>
+                                                        </div>
+                                                    </form>
+                                                    <br>
+
+                                                </div>
+                                                <div class="col-md-4">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="add-cart">
+                                                <a href="#" class="btn w-100 hover-up"
+                                                   tabindex="-1"><i class="fi-rs-shopping-cart mr-5"></i>Add To Cart</a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                    {% endfor %}
+                                    <!--End product Wrap-->
+
+
+                                    <!--End product Wrap-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--End tab-pane-->
+
+                    </div>
+                    <!--End tab-content-->
+                </div>
+                <!--End Col-lg-9-->
+            </div>
+            <br>
+
+        </div>
+    </section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-center">Our Latest Blog</h3>
+                <br>
+                <p> Pause and Resume deliveries as you wish, with just a click of a button.</p><br>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            {% for n in postall %}
+            <article class="col-md-3 text-center hover-up mb-30 animated">
+                <div class="post-thumb">
+                    <a href="blog/{{n.slug}}">
+                        <img class="border-radius-15" src="{{n.feature_image.url}}" alt=""/>
+                    </a>
+                </div>
+                <div class="entry-content-2">
+                    <br>
+                    <h4 class="post-title mb-15">
+                        <a href="blog/{{n.slug}}">{{n.title}}</a>
+                    </h4>
+                    <div class="entry-meta font-xs color-grey mt-10 pb-10">
+
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+<section class="newsletter mb-15 wow animate__animated animate__fadeIn">
+    <div class="container">
+        <div class="col-lg-12 text-center">
+            <div class="position-relative newsletter-inner">
+                <div class="newsletter-content">
+                    <h2 class="mb-20 text-center">
+                        Contact for <br/>
+                        Bulk Orders needs from our shop
+                    </h2>
+                    <p>Quickly design and customize responsive mobile-first sites with Bootstrap </p>
+                    <p class="mb-45 text-center">Start You'r Daily Shopping with <span
+                            class="text-brand">Nest Mart</span></p>
+                    <a href="bulk" class="btn btn-info" role="button">Contact us</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+</section>
+
+
+    <!--Products Tabs-->
+
+    <!--End Best Sales-->
+
+    <!--End Deals-->
+
+    <!--End 4 columns-->
+</main>
+{% endblock content %}

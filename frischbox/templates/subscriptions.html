@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<main class="main">
+    <div class="page-header mt-30 mb-75">
+        <div class="container">
+            <div class="archive-header">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-4">
+                        <h1 class="mb-15 text-center">Subscription Packs </h1>
+                        <div class="breadcrumb">
+                            <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                            <span></span> Where we Deliver
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="container">
+            <div class="col-lg-12 col-md-12 wow animate__animated animate__fadeIn" data-wow-delay=".4s">
+                <div class="tab-content" id="myTabContent-1">
+                    <div class="tab-pane fade show active" id="tab-one-1" role="tabpanel"
+                         aria-labelledby="tab-one-1">
+                        <div class="carausel-4-columns-cover arrow-center position-relative">
+                            <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow"
+                                 id="carausel-4-columns-arrows"></div>
+                            <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">
+                                {% for n in allpackages %}
+                                <div class="product-cart-wrap">
+
+                                    <div class="card mb-4 box-shadow">
+                                        <div class="card-header">
+                                            <h4 class="my-0 font-weight-normal">8% OFF</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <img class="default-img" src="{{n.image.url}}" alt=""/>
+                                            <span class="old-price font-md ml-15 ">{{n.Mrp}} </span>
+                                            <h3 class="card-title pricing-card-title text-center ">{{n.sale_price}} </h3>
+                                            <p class="text-center">{{n.name}}</p>
+                                            <ul class="list-unstyled mt-3 mb-4 text-center">
+                                                {{n.package_description | safe}}
+                                            </ul>
+                                            <div class="row">
+                                                <div class="col-md-4">
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <form>
+                                                        <div class="detail-qty border radius">
+                                                            <a href="#" class="qty-down"><i
+                                                                    class="fi-rs-angle-small-down"></i></a>
+                                                            <span class="qty-val">1</span>
+                                                            <a href="#" class="qty-up"><i
+                                                                    class="fi-rs-angle-small-up"></i></a>
+                                                        </div>
+                                                    </form>
+                                                    <br>
+
+                                                </div>
+                                                <div class="col-md-4">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="add-cart">
+                                                <a href="#" class="btn w-100 hover-up"
+                                                   tabindex="-1"><i class="fi-rs-shopping-cart mr-5"></i>Add To Cart</a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                {% endfor %}
+                                <!--End product Wrap-->
+
+
+                                <!--End product Wrap-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--End tab-pane-->
+
+                </div>
+                <!--End tab-content-->
+            </div>
+            <!--End Col-lg-9-->
+        </div>
+    </div>
+    <section class="newsletter mb-15 wow animate__animated animate__fadeIn">
+        <div class="container">
+            <div class="col-lg-12 text-center">
+                <div class="position-relative newsletter-inner">
+                    <div class="newsletter-content">
+                        <h2 class="mb-20 text-center">
+                            Contact for <br/>
+                            Bulk Orders needs from our shop
+                        </h2>
+                        <p>Quickly design and customize responsive mobile-first sites with Bootstrap </p>
+                        <p class="mb-45 text-center">Start You'r Daily Shopping with <span
+                                class="text-brand">Frischbox</span></p>
+                        <a href="bulk" class="btn btn-info" role="button">Contact us</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+</main>
+{% endblock content %}

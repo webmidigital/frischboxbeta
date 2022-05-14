@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load cart_tag %}
+{% block content %}
+<main class="main">
+
+    <div class="container mb-80 mt-50">
+        <div class="row">
+            <div class="col-lg-8 mb-40">
+                <h1 class="heading-2 mb-10">Checkout</h1>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5">
+                <form action="{% url 'placeorder' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <h4 class="mb-30">Shipping Address</h4>
+
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <input type="text" required="" name="firstname" value="{{user.first_name}}"
+                                       placeholder="First name *" readonly>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <input type="text" required="" name="lastname" value="{{user.last_name}}"
+                                       placeholder="Last name *" readonly>
+
+                            </div>
+                        </div>
+                        <div class="row shipping_calculator">
+                            <div class="form-group col-lg-6">
+                                <div class="custom_select">
+                                    <select class="form-control select-active" name="country">
+                                        <option value="India">India</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                     <div class="custom_select">
+                                    <select class="form-control select-active" name="state">
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                    </select>
+                                </div>
+                            </div>
+                             <div class="form-group col-lg-6">
+                                     <div class="custom_select">
+                                    <select class="form-control select-active" name="city">
+                                        <option value="Raipur">Raipur</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <input type="text" name="addressline1" required="" placeholder="Address line 1 "
+                                       required/>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <input type="text" name="addressline2" required="" placeholder="Address line 2 "
+                                       required/>
+                            </div>
+                              <div class="form-group col-lg-6">
+                                <input type="text" name="landmark" required="" placeholder="Landmark *" required/>
+                            </div>
+                                <div class="form-group col-lg-6">
+                                <input required="" type="number" name="postcode" placeholder="Postcode / ZIP *"
+                                       required/>
+                                <input type="text" name="order_id" value="{{order_id}}" hidden ">
+                                <input type="text" name="payment" value="{{payment}}" hidden>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <input required="" type="number" name="phone" placeholder="Phone *" required/>
+                            </div>
+                        </div>
+
+                        </div>
+                    <div class="form-group col-lg-6">
+                                <input required="" type="text" name="email" value="{{user.email}}"
+                                       placeholder="Email address *" readonly>
+                            </div>
+
+                        <div class="row">
+
+
+
+                        <div class="row">
+
+
+                        </div>
+
+
+                    </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="border p-40 cart-totals ml-30 mb-50">
+                    <div class="d-flex align-items-end justify-content-between mb-30">
+                        <h4>Your Order</h4>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive shopping-summery">
+                                <table class="table table-wishlist">
+                                    <thead>
+                                    <tr class="main-heading">
+
+                                        <th scope="col" colspan="2">Product</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Unit Price</th>
+                                        <th scope="col">Subtotal</th>
+                                        <th scope="col" class="end">Remove</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for key,value in request.session.cart.items %}
+                                    <tr class="pt-30">
+                                        <td class="custome-checkbox pl-30">
+                                            <input class="form-check-input" type="checkbox" name="checkbox"
+                                                   id="exampleCheckbox1"
+                                                   value="">
+                                            <label class="form-check-label" for="exampleCheckbox1"></label>
+                                        </td>
+
+                                        <td class="product-des product-name">
+                                            <h6 class="mb-5"><a class="product-name mb-10 text-heading" href="#">{{value.name}}</a>
+                                            </h6>
+
+                                        </td>
+                                        <td class="price" data-title="Price">
+                                            <h4 class="text-body"> ₹ {{value.price}} </h4>
+                                        </td>
+                                        <td class="text-center detail-info" data-title="Stock">
+                                            <div class="detail-extralink mr-15">
+                                                <div class="detail-qty border radius">
+                                                    <a href="{% url 'item_decrement' value.product_id %}"
+                                                       class="qty-down"><i
+                                                            class="fi-rs-angle-small-down"></i></a>
+                                                    <span class="qty-val" na>{{value.quantity}}</span>
+                                                    <a href="{% url 'item_increment' value.product_id %}"
+                                                       class="qty-up"><i
+                                                            class="fi-rs-angle-small-up"></i></a>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="price" data-title="Price">
+                                            <h4 class="text-brand">₹ {{ value.price|multiply:value.quantity }} </h4>
+                                        </td>
+                                        <td class="action text-center" data-title="Remove"><a
+                                                href="{% url 'item_clear' key %}"
+                                                class="text-body"><i
+                                                class="fi-rs-trash"></i></a></td>
+                                    </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                                <div class="table-responsive">
+                                    <table class="table no-border">
+                                        <tbody>
+                                        <tr>
+                                            <td class="cart_total_label">
+                                                <h6 class="text-muted">Subtotal</h6>
+                                            </td>
+                                            <td class="cart_total_amount">
+                                                <h4 class="text-brand text-end">₹ {{cart_total_amount}}</h4>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="cart_total_label">
+                                                <h6 class="text-muted">Shipping</h6>
+                                            </td>
+                                            <td class="cart_total_amount">
+                                                <h5 class="text-heading text-end">Free</h5></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cart_total_label">
+                                                <h6 class="text-muted">Total Tax</h6>
+                                            </td>
+                                            <td class="cart_total_amount">
+                                                <h5 class="text-heading text-end">5%</h5></td>
+                                        </tr>
+                                        <tr>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="cart_total_label">
+                                                <h6>Total</h6>
+                                            </td>
+                                            <td class="cart_total_amount">
+                                                <h4 class="text-end">₹ <input value="{{cart_total_amount|add:10}}"
+                                                                              name="amount" readonly></h4>
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <button type="submit" class="btn btn-fill-out btn-block mt-30">Proceed to payment <i
+                                        class="fi-rs-sign-out ml-15"></i></button>
+                                </a>
+                                </form>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

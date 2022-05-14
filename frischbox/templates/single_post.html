@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+       <main class="main">
+        <div class="page-content mb-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 m-auto">
+                        <div class="single-page pt-50 pr-30">
+                            <div class="single-header style-2">
+                                <div class="row">
+                                    <div class="col-xl-10 col-lg-12 m-auto">
+                                        <h2 class="mb-10">{{postdetails.title}}</h2>
+                                        <div class="single-header-meta">
+                                            <div class="entry-meta meta-1 font-xs mt-15 mb-15">
+                                                <span class="post-by">By <a href="#">{{postdetails.author}}</a></span>
+                                                <span class="post-on has-dot">{{postdetails.created_at}}</span>
+                                                <span class="time-reading has-dot">{{postdetails.updated_at}}</span>
+                                            </div>
+                                            <div class="social-icons single-share">
+                                                <ul class="text-grey-5 d-inline-block">
+                                                    <li class="mr-5"><a href="#"><img src="assets/imgs/theme/icons/icon-bookmark.svg" alt=""></a></li>
+                                                    <li><a href="#"><img src="assets/imgs/theme/icons/icon-heart-2.svg" alt=""></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <figure class="single-thumbnail">
+                                <img src="{{postdetails.feature_image.url}}" alt="">
+                            </figure>
+                            <div class="single-content">
+                               {{postdetails.content | safe}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+{% endblock content %}
