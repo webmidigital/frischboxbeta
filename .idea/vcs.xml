@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/frischbox/fierce-river-77194" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/frischbox/fierce-river-77194/frischboxbeta" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/frischbox/fierce-river-77194/python-getting-started" vcs="Git" />
   </component>
 </project>

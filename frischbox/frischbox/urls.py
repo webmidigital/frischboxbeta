@@ -14,6 +14,7 @@ urlpatterns = [
     path('contact', views.contactform, name='contactform'),
     path('about/', views.about, name='about'),
     path('bulk', views.bulk, name='bulk'),
+    path('status', views.status, name='status'),
     path('cities', views.cities, name='cities'),
     path('subscriptions', views.subscriptions, name='subscriptions'),
     path('policy/<postid>', views.policydetails, name='policydetails'),

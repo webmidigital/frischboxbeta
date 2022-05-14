@@ -42,41 +42,30 @@
 
                                     <div class="card mb-4 box-shadow">
                                         <div class="card-header">
-                                            <h4 class="my-0 font-weight-normal">8% OFF</h4>
+                                            <h4 class="my-0 font-weight-normal">10% OFF</h4>
                                         </div>
                                         <div class="card-body">
                                             <img class="default-img" src="{{n.image.url}}" alt=""/>
-                                            <span class="old-price font-md ml-15 ">{{n.Mrp}} </span>
+
                                             <h3 class="card-title pricing-card-title text-center ">{{n.sale_price}} </h3>
                                             <p class="text-center">{{n.name}}</p>
+                                            <p class="text-center">{{n.Delivery_Days}}</p>
                                             <ul class="list-unstyled mt-3 mb-4 text-center">
-                                                {{n.package_description | safe}}
+                                                {{n.description | safe}}
                                             </ul>
                                             <div class="row">
                                                 <div class="col-md-4">
 
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <form>
-                                                        <div class="detail-qty border radius">
-                                                            <a href="#" class="qty-down"><i
-                                                                    class="fi-rs-angle-small-down"></i></a>
-                                                            <span class="qty-val">1</span>
-                                                            <a href="#" class="qty-up"><i
-                                                                    class="fi-rs-angle-small-up"></i></a>
-                                                        </div>
-                                                    </form>
-                                                    <br>
 
-                                                </div>
                                                 <div class="col-md-4">
 
                                                 </div>
                                             </div>
 
                                             <div class="add-cart">
-                                                <a href="#" class="btn w-100 hover-up"
-                                                   tabindex="-1"><i class="fi-rs-shopping-cart mr-5"></i>Add To Cart</a>
+                                                <a href="{{n.paylink}}" class="btn w-100 hover-up"
+                                                   tabindex="-1"><i class="fi-rs-shopping-cart mr-5"></i>Buy Now!</a>
 
                                             </div>
 
